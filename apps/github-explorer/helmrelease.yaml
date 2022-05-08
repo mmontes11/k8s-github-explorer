@@ -1,0 +1,43 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: github-explorer
+spec:
+  releaseName: github-explorer
+  chart:
+    spec:
+      chart: github-explorer
+      sourceRef:
+        kind: HelmRepository
+        name: mmontes
+        namespace: flux-system
+      version: "0.1.0"
+  interval: 5m
+  values:
+    image:
+      repository: mmontes11/github-explorer
+      pullPolicy: IfNotPresent
+      tag: "0.5.0"
+
+    service:
+      type: ClusterIP
+      port: 80
+
+    ingressRoute:
+      enabled: true
+      host: github-explorer.mmontes-dev.duckdns.org
+      entryPoints:
+        - websecure
+
+    resources:
+      requests:
+        cpu: 50m
+        memory: 50Mi
+      limits:
+        cpu: 200m
+        memory: 200Mi
+
+    replicaCount: 1
+
+    autoscaling:
+      enabled: false

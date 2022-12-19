@@ -27,7 +27,7 @@ spec:
       enabled: true
       host: github-explorer.mmontes.duckdns.org
       gatewayRef:
-        name: traefik
+        name: traefik-external
         namespace: networking
 
     resources:

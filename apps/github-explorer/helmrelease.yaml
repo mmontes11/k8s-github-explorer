@@ -11,13 +11,12 @@ spec:
         kind: HelmRepository
         name: mmontes
         namespace: flux-system
-      version: "0.2.1"
+      version: "0.2.3"
   interval: 5m
   values:
     image:
-      repository: mmontes11/github-explorer
+      repository: ghcr.io/mmontes11/github-explorer
       pullPolicy: IfNotPresent
-      tag: "0.5.0"
 
     service:
       type: ClusterIP

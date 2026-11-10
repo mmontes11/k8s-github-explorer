@@ -26,8 +26,8 @@ spec:
       enabled: true
       host: github-explorer.mmontes.duckdns.org
       gatewayRef:
-        name: traefik-external
-        namespace: networking
+        name: envoy-external
+        namespace: envoy-external
 
     resources:
       requests:
